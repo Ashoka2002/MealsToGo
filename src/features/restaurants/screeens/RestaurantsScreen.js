@@ -11,17 +11,17 @@ const SafeArea = styled(SafeAreaView)`
 
 const SearchContainer = styled.View`
   justify-content: "center";
-  padding: 12px;
+  padding: ${({ theme }) => theme.space[3]};
 `;
 
 const SearchBar = styled(Searchbar)`
-  border-radius: 4px;
-  background-color: "#fff";
+  border-radius: ${({ theme }) => theme.sizes[0]};
+  background-color: ${({ theme }) => theme.colors.bg.primary};
 `;
 
 const RestaurantListContainer = styled.View`
   flex: 1;
-  padding: 16px;
+  padding: ${({ theme }) => theme.space[3]};
 `;
 
 function RestaurantsScreen() {
