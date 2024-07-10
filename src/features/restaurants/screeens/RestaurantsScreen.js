@@ -4,7 +4,7 @@ import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
-import { RestrauntContext } from "../../../services/restaurants/mock/restaurantsContext";
+import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
 
 const SearchContainer = styled.View`
   justify-content: center;
@@ -23,8 +23,7 @@ const StyledFlatList = styled(FlatList).attrs({
 })``;
 
 function RestaurantsScreen() {
-  const { restraunts } = useContext(RestrauntContext);
-  console.log("restrants.............", restraunts);
+  const { restaurants, error, isLoading } = useContext(RestaurantContext);
   return (
     <SafeArea>
       <SearchContainer>
@@ -32,8 +31,8 @@ function RestaurantsScreen() {
       </SearchContainer>
 
       <StyledFlatList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]}
-        renderItem={() => <RestaurantInfoCard />}
+        data={restaurants}
+        renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
         keyExtractor={(item) => item.name}
       />
     </SafeArea>

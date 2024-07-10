@@ -29,14 +29,14 @@ export function RestaurantInfoCard({ restaurant = {} }) {
             ))}
           </Rating>
 
-          {isClosedTemporarily && (
+          {isClosedTemporarily && <Text variant={"error"}>CLOSED TEMPORARILY</Text>}
+
+          {!isClosedTemporarily && isOpenNow && (
             <Row>
-              <Text variant={"error"}>CLOSED TEMPORARILY</Text>
+              <SvgXml width={25} height={25} xml={open} />
               <Image width={20} height={20} source={{ uri: icon }} />
             </Row>
           )}
-
-          {!isClosedTemporarily && isOpenNow && <SvgXml width={25} height={25} xml={open} />}
         </Row>
         <Address>{address}</Address>
       </Info>
