@@ -10,6 +10,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "./src/components/utility/SafeAreaComp";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
+import { restaurantsRequest } from "./src/services/restaurants/mock/restaurantsService";
+
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
