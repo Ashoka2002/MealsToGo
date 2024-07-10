@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
+import { RestrauntContext } from "../../../services/restaurants/mock/restaurantsContext";
 
 const SearchContainer = styled.View`
   justify-content: center;
@@ -22,6 +23,8 @@ const StyledFlatList = styled(FlatList).attrs({
 })``;
 
 function RestaurantsScreen() {
+  const { restraunts } = useContext(RestrauntContext);
+  console.log("restrants.............", restraunts);
   return (
     <SafeArea>
       <SearchContainer>

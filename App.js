@@ -11,6 +11,7 @@ import { SafeArea } from "./src/components/utility/SafeAreaComp";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { restaurantsRequest } from "./src/services/restaurants/mock/restaurantsService";
+import { RestaurantProvider } from "./src/services/restaurants/mock/restaurantsContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,20 @@ function SettingsScreen() {
   );
 }
 
+function tabBarIcon(color, size, route) {
+  let iconName;
+
+  if (route.name === "Home") {
+    iconName = "restaurant";
+  } else if (route.name === "Settings") {
+    iconName = "settings";
+  } else if (route.name === "Map") {
+    iconName = "map";
+  }
+  // You can return any component that you like here!
+  return <Ionicons name={iconName} size={size} color={color} />;
+}
+
 export default function App() {
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
@@ -45,33 +60,22 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        {/* <Tab.Navigator screenOptions={{ headerShown: false }}> */}
-        <Tab.Navigator
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              if (route.name === "Home") {
-                iconName = "restaurant";
-              } else if (route.name === "Settings") {
-                iconName = "settings";
-              } else if (route.name === "Map") {
-                iconName = "map";
-              }
-              // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: "tomato",
-            tabBarInactiveTintColor: "gray",
-            headerShown: false,
-          })}
-        >
-          <Tab.Screen name="Home" component={RestaurantsScreen} />
-          <Tab.Screen name="Map" component={HomeScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <RestaurantProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => tabBarIcon(color, size, route),
+              tabBarActiveTintColor: "tomato",
+              tabBarInactiveTintColor: "gray",
+              headerShown: false,
+            })}
+          >
+            <Tab.Screen name="Home" component={RestaurantsScreen} />
+            <Tab.Screen name="Map" component={HomeScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RestaurantProvider>
     </ThemeProvider>
   );
 }
