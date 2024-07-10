@@ -10,8 +10,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "./src/components/utility/SafeAreaComp";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import { restaurantsRequest } from "./src/services/restaurants/mock/restaurantsService";
 import { RestaurantProvider } from "./src/services/restaurants/mock/restaurantsContext";
+import { LocationContextProvider } from "./src/services/location/locationContext";
 
 const Tab = createBottomTabNavigator();
 
@@ -60,22 +60,24 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <RestaurantProvider>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ color, size }) => tabBarIcon(color, size, route),
-              tabBarActiveTintColor: "tomato",
-              tabBarInactiveTintColor: "gray",
-              headerShown: false,
-            })}
-          >
-            <Tab.Screen name="Home" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={HomeScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </RestaurantProvider>
+      <LocationContextProvider>
+        <RestaurantProvider>
+          <NavigationContainer>
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ color, size }) => tabBarIcon(color, size, route),
+                tabBarActiveTintColor: "tomato",
+                tabBarInactiveTintColor: "gray",
+                headerShown: false,
+              })}
+            >
+              <Tab.Screen name="Home" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={HomeScreen} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
