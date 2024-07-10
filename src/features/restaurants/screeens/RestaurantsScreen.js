@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { FlatList, ActivityIndicator } from "react-native";
+import { Searchbar, MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
@@ -22,6 +22,10 @@ const StyledFlatList = styled(FlatList).attrs({
   },
 })``;
 
+const StyledActivityIndicator = styled(ActivityIndicator)`
+  flex: 1;
+`;
+
 function RestaurantsScreen() {
   const { restaurants, error, isLoading } = useContext(RestaurantContext);
   return (
@@ -30,11 +34,15 @@ function RestaurantsScreen() {
         <SearchBar elevation={1} />
       </SearchContainer>
 
-      <StyledFlatList
-        data={restaurants}
-        renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
-        keyExtractor={(item) => item.name}
-      />
+      {isLoading ? (
+        <StyledActivityIndicator animating={true} color={MD2Colors.orange800} size={50} />
+      ) : (
+        <StyledFlatList
+          data={restaurants}
+          renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
+          keyExtractor={(item) => item.name}
+        />
+      )}
     </SafeArea>
   );
 }
