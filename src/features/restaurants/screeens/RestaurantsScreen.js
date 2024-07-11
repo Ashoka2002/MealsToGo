@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList, ActivityIndicator } from "react-native";
+import { FlatList, ActivityIndicator, Text } from "react-native";
 import { MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
@@ -19,6 +19,7 @@ const StyledActivityIndicator = styled(ActivityIndicator)`
 
 function RestaurantsScreen() {
   const { restaurants, error, isLoading } = useContext(RestaurantContext);
+
   return (
     <SafeArea>
       <SearchComp />

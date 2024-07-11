@@ -9,8 +9,6 @@ export const RestaurantProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { location } = useContext(LocationContext);
-  console.log("location", location);
-  // console.log("rest", restaurants);
   const retrieveRestaurants = (loc) => {
     setIsLoading(true);
     setRestaurants([]);
@@ -19,12 +17,10 @@ export const RestaurantProvider = ({ children }) => {
         .then(restaurantsTransform)
         .then((results) => {
           setRestaurants(results);
-          console.log("res", results);
           setIsLoading(false);
         })
         .catch((err) => {
           setIsLoading(false);
-          console.log("err", err);
           setError(err);
         });
     }, 2000);

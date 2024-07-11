@@ -17,10 +17,6 @@ function SearchComp() {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
-  useEffect(() => {
-    search(searchKeyword);
-  }, []);
-
   function onSearch() {
     if (!searchKeyword) return;
     console.log(searchKeyword);

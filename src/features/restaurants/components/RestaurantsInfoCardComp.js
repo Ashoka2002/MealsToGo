@@ -10,10 +10,11 @@ export function RestaurantInfoCard({ restaurant = {} }) {
     name = "Ashok",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos = ["https://t4.ftcdn.net/jpg/07/08/47/75/360_F_708477508_DNkzRIsNFgibgCJ6KoTgJjjRZNJD4mb4.webp"],
-    address = "jaipur",
+    vicinity: address = "jaipur",
     isOpenNow = true,
     rating = 4,
     isClosedTemporarily = true,
+    placeId,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -25,7 +26,7 @@ export function RestaurantInfoCard({ restaurant = {} }) {
         <Row>
           <Rating>
             {ratingArray.map((_, i) => (
-              <SvgXml key={i} width={20} height={20} xml={star} />
+              <SvgXml key={`star-${placeId}-${i}`} width={20} height={20} xml={star} />
             ))}
           </Rating>
 
