@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList, ActivityIndicator, Pressable, Text } from "react-native";
+import { FlatList, ActivityIndicator, TouchableOpacity, Text } from "react-native";
 import { MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
@@ -30,9 +30,9 @@ function RestaurantsScreen({ navigation }) {
         <StyledFlatList
           data={restaurants}
           renderItem={({ item }) => (
-            <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate("RestaurantDetail")}>
               <RestaurantInfoCard restaurant={item} />
-            </Pressable>
+            </TouchableOpacity>
           )}
           keyExtractor={(item) => item.name}
         />
