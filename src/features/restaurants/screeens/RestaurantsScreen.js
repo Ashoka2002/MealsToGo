@@ -30,7 +30,7 @@ function RestaurantsScreen({ navigation }) {
         <StyledFlatList
           data={restaurants}
           renderItem={({ item }) => (
-            <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate("RestaurantDetail")}>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate("RestaurantDetail", { item })}>
               <RestaurantInfoCard restaurant={item} />
             </TouchableOpacity>
           )}
