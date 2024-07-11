@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList, ActivityIndicator, Text } from "react-native";
+import { FlatList, ActivityIndicator, Pressable, Text } from "react-native";
 import { MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
@@ -17,7 +17,7 @@ const StyledActivityIndicator = styled(ActivityIndicator)`
   flex: 1;
 `;
 
-function RestaurantsScreen() {
+function RestaurantsScreen({ navigation }) {
   const { restaurants, error, isLoading } = useContext(RestaurantContext);
 
   return (
@@ -29,7 +29,11 @@ function RestaurantsScreen() {
       ) : (
         <StyledFlatList
           data={restaurants}
-          renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
+          renderItem={({ item }) => (
+            <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+              <RestaurantInfoCard restaurant={item} />
+            </Pressable>
+          )}
           keyExtractor={(item) => item.name}
         />
       )}
