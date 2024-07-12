@@ -20,6 +20,12 @@ const StyledActivityIndicator = styled(ActivityIndicator)`
 function RestaurantsScreen({ navigation }) {
   const { restaurants, error, isLoading } = useContext(RestaurantContext);
 
+  const renderItem = ({ item }) => (
+    <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate("RestaurantDetail", { item })}>
+      <RestaurantInfoCard restaurant={item} />
+    </TouchableOpacity>
+  );
+
   return (
     <SafeArea>
       <SearchComp />
@@ -27,15 +33,7 @@ function RestaurantsScreen({ navigation }) {
       {isLoading ? (
         <StyledActivityIndicator animating={true} color={MD2Colors.orange800} size={50} />
       ) : (
-        <StyledFlatList
-          data={restaurants}
-          renderItem={({ item }) => (
-            <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate("RestaurantDetail", { item })}>
-              <RestaurantInfoCard restaurant={item} />
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.name}
-        />
+        <StyledFlatList data={restaurants} renderItem={renderItem} keyExtractor={(item) => item.name.toString()} />
       )}
     </SafeArea>
   );
