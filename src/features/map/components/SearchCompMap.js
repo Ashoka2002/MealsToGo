@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components";
 import { LocationContext } from "../../../services/location/locationContext";
+import { SafeArea } from "../../../components/utility/SafeAreaComp";
 
 const SearchContainer = styled.View`
   justify-content: center;
@@ -11,9 +12,14 @@ const SearchContainer = styled.View`
 const SearchBar = styled(Searchbar)`
   border-radius: ${({ theme }) => theme.sizes[0]};
   background-color: ${({ theme }) => theme.colors.bg.primary};
+  position: absolute;
+  top: 30px;
+  left: 8px;
+  right: 8px;
+  z-index: 100;
 `;
 
-function SearchComp() {
+function SearchCompMap() {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -28,16 +34,15 @@ function SearchComp() {
   }
 
   return (
-    <SearchContainer>
-      <SearchBar
-        placeholder="Search for a location"
-        onSubmitEditing={onSearch}
-        onChangeText={setSearchKeyword}
-        value={searchKeyword}
-        elevation={1}
-      />
-    </SearchContainer>
+    <SearchBar
+      placeholder="Search for a location"
+      icon="map"
+      onSubmitEditing={onSearch}
+      onChangeText={setSearchKeyword}
+      value={searchKeyword}
+      elevation={1}
+    />
   );
 }
 
-export default SearchComp;
+export default SearchCompMap;

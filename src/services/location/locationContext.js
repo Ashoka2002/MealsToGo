@@ -12,7 +12,6 @@ export const LocationContextProvider = ({ children }) => {
 
   const onSearch = (searchKeyword = "Antwerp") => {
     setIsLoading(true);
-    setLocation(null);
     setKeyword(searchKeyword);
   };
 
@@ -26,6 +25,7 @@ export const LocationContextProvider = ({ children }) => {
       })
       .catch((err) => {
         setIsLoading(false);
+        setLocation({});
         setError(err);
       });
   }, [keyword]);

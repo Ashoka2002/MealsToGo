@@ -7,19 +7,9 @@ import { RestaurantNavigator } from "./RestaurantsNavigator";
 
 import { Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import MapScreen from "../../features/map/screens/MapScreen";
 
 const Tab = createBottomTabNavigator();
-
-function HomeScreen() {
-  return (
-    <SafeArea>
-      <View style={{ flex: 1 }}>
-        <Text>Home!</Text>
-        <Ionicons name="home" size={32} color="green" />
-      </View>
-    </SafeArea>
-  );
-}
 
 function SettingsScreen() {
   return (
@@ -55,7 +45,7 @@ function AppNavigation() {
         })}
       >
         <Tab.Screen name="Home" component={RestaurantNavigator} />
-        <Tab.Screen name="Map" component={HomeScreen} />
+        <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
