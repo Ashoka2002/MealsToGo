@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, Text } from "react-native";
-import MapView, { Marker } from "react-native-maps";
+import { StyleSheet, View, Text, Image } from "react-native";
+import MapView, { Marker, Callout } from "react-native-maps";
 import styled from "styled-components";
 import SearchCompMap from "../components/SearchCompMap";
 import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
 import { LocationContext } from "../../../services/location/locationContext";
+import { MapCalloutComp } from "../components/MapCalloutComp";
 
 const Map = styled(MapView)`
   width: 100%;
@@ -42,7 +43,12 @@ export default function MapScreen() {
               key={res.name}
               title={res.name}
               coordinate={{ latitude: res.geometry.location.lat, longitude: res.geometry.location.lng }}
-            ></Marker>
+            >
+              {/* <Image style={{ height: 30, width: 30 }} source={require("../../../../assets/pin.png")} /> */}
+              <Callout>
+                <MapCalloutComp restaurant={res} />
+              </Callout>
+            </Marker>
           ))}
         </Map>
       )}

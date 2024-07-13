@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "../../components/utility/SafeAreaComp";
 import { RestaurantNavigator } from "./RestaurantsNavigator";
 
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MapScreen from "../../features/map/screens/MapScreen";
 
@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
+      <Image style={{ height: 50, width: 30 }} source={require("../../../assets/pin.png")} />
     </View>
   );
 }
