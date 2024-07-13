@@ -12,7 +12,7 @@ const Map = styled(MapView)`
   height: 100%;
 `;
 
-export default function MapScreen() {
+export default function MapScreen({ navigation }) {
   const { restaurants } = useContext(RestaurantContext);
   const { location } = useContext(LocationContext);
 
@@ -45,7 +45,7 @@ export default function MapScreen() {
               coordinate={{ latitude: res.geometry.location.lat, longitude: res.geometry.location.lng }}
             >
               {/* <Image style={{ height: 30, width: 30 }} source={require("../../../../assets/pin.png")} /> */}
-              <Callout>
+              <Callout onPress={() => navigation.navigate("RestaurantDetail", { item: res })}>
                 <MapCalloutComp restaurant={res} />
               </Callout>
             </Marker>
