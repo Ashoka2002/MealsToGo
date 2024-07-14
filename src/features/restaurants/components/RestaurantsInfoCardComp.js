@@ -4,6 +4,7 @@ import open from "../../../../assets/open";
 import star from "../../../../assets/star";
 import { Text } from "../../../components/typography/typographyComp";
 import { Address, Info, Rating, RestaurantCard, RestaurantCardCover, Row } from "./RestaurantsInfoCardStyle";
+import { Favourite } from "../../../components/favourites/FavouriteIcon";
 
 export function RestaurantInfoCard({ restaurant = {} }) {
   const {
@@ -20,6 +21,7 @@ export function RestaurantInfoCard({ restaurant = {} }) {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <RestaurantCard elevation={1} key={name}>
+      <Favourite />
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant={"label"}>{name}</Text>
