@@ -13,7 +13,7 @@ const SearchBar = styled(Searchbar)`
   background-color: ${({ theme }) => theme.colors.bg.primary};
 `;
 
-function SearchComp() {
+function SearchComp({ isFavToggled, onFavToggle }) {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -30,6 +30,8 @@ function SearchComp() {
   return (
     <SearchContainer>
       <SearchBar
+        icon={isFavToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavToggle}
         placeholder="Search for a location"
         onSubmitEditing={onSearch}
         onChangeText={setSearchKeyword}
