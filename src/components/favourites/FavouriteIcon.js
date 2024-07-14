@@ -11,11 +11,12 @@ const FavouriteButton = styled(TouchableOpacity)`
   z-index: 9;
 `;
 
-export const Favourite = () => {
+export const Favourite = ({ restaurant }) => {
   const { addToFavourites, favourites, removeFromFavourites } = useContext(FavouritesContext);
+  const isFavourite = favourites.find((res) => res.placeId === restaurant.placeId);
   return (
-    <FavouriteButton>
-      <AntDesign name="hearto" size={24} color="white" />
+    <FavouriteButton onPress={() => (!isFavourite ? addToFavourites(restaurant) : removeFromFavourites(restaurant))}>
+      <AntDesign name={isFavourite ? "heart" : "hearto"} size={26} color={isFavourite ? "red" : "white"} />
     </FavouriteButton>
   );
 };

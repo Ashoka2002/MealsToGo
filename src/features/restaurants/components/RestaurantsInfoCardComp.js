@@ -21,7 +21,7 @@ export function RestaurantInfoCard({ restaurant = {} }) {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <RestaurantCard elevation={1} key={name}>
-      <Favourite />
+      <Favourite restaurant={restaurant} />
       <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant={"label"}>{name}</Text>
