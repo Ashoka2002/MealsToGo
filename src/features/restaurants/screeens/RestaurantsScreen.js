@@ -31,7 +31,7 @@ function RestaurantsScreen({ navigation }) {
   return (
     <SafeArea>
       <SearchComp isFavToggled={isToggled} onFavToggle={() => setIsToggled(!isToggled)} />
-      {isToggled && <FavouriteBar />}
+      {isToggled && <FavouriteBar navigation={navigation} />}
       {isLoading ? (
         <StyledActivityIndicator animating={true} color={MD2Colors.orange800} size={50} />
       ) : (

@@ -23,7 +23,7 @@ const StyledView = styled.View`
 `;
 
 const Title = styled(Text)`
-  font-weight: bold;
+  /* font-weight: bold; */
   text-align: center;
   margin-bottom: 5px;
 `;
@@ -32,17 +32,16 @@ const Address = styled(Text)`
   text-align: center;
   color: gray;
 `;
+const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
+  const Image = isAndroid && isMap ? StyledImgAndroid : StyledImg;
   return (
     <StyledView>
-      {Platform.OS === "android" ? (
-        <StyledImgAndroid source={{ uri: restaurant.photos[0] }} />
-      ) : (
-        <StyledImg source={{ uri: restaurant.photos[0] }} />
-      )}
-      <Title variant="label">{restaurant.name}</Title>
-      <Address variant="caption">{restaurant.vicinity}</Address>
+      <Image source={{ uri: restaurant.photos[0] }} />
+
+      <Title>{restaurant.name}</Title>
+      {/* <Address variant="caption">{restaurant.vicinity}</Address> */}
     </StyledView>
   );
 };

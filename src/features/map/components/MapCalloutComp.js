@@ -5,5 +5,5 @@ import { Text } from "../../../components/typography/typographyComp";
 import { CompactRestaurantInfo } from "../../../components/restaurants/CompactRestaurantInfo";
 
 export function MapCalloutComp({ restaurant }) {
-  return <CompactRestaurantInfo restaurant={restaurant} />;
+  return <CompactRestaurantInfo restaurant={restaurant} isMap={true} />;
 }
