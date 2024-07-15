@@ -1,23 +1,34 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getAuth } from "firebase/auth";
+import { AuthenticationContext } from "../firebase/AuthenticationContext";
 
 export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
   const [favourites, setFavourites] = useState([]);
+  const { user } = useContext(AuthenticationContext);
 
-  const saveFav = async (value) => {
+  useEffect(() => {
+    if (user) getFav(user.uid);
+  }, [user]);
+
+  useEffect(() => {
+    if (user) saveFav(favourites, user.uid);
+  }, [favourites, user]);
+
+  const saveFav = async (value, uid) => {
     try {
       const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("favourites", jsonValue);
+      await AsyncStorage.setItem(`@fav-${uid}`, jsonValue);
     } catch (e) {
       console.log("save Fav", e);
     }
   };
 
-  const getFav = async () => {
+  const getFav = async (uid) => {
     try {
-      const jsonValue = await AsyncStorage.getItem("favourites");
+      const jsonValue = await AsyncStorage.getItem(`@fav-${uid}`);
       if (jsonValue !== null) {
         setFavourites(JSON.parse(jsonValue));
       }
@@ -34,14 +45,6 @@ export const FavouritesContextProvider = ({ children }) => {
     const newRestaurant = favourites.filter((res) => res.placeId !== restaurant.placeId);
     setFavourites(newRestaurant);
   };
-
-  useEffect(() => {
-    getFav();
-  }, []);
-
-  useEffect(() => {
-    saveFav(favourites);
-  }, [favourites]);
 
   return (
     <FavouritesContext.Provider value={{ favourites, addToFavourites: add, removeFromFavourites: remove }}>

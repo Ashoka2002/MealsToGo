@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useState } from "react";
 import { auth } from "./firebaseConfig";
 
@@ -8,6 +8,9 @@ export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
+  onAuthStateChanged(auth, (user) => {
+    if (user) setUser(user);
+  });
 
   const onLogin = (email, password) => {
     setIsLoading(true);
@@ -30,12 +33,24 @@ export const AuthenticationContextProvider = ({ children }) => {
         // Signed up
         setIsLoading(false);
         setUser(userCredential.user);
-        // ...
       })
       .catch((error) => {
         setIsLoading(false);
         setError(error.message);
         // ..
+      });
+  };
+
+  const onLogout = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        setIsLoading(false);
+        setUser(null);
+      })
+      .catch((e) => {
+        console.log("logouterror", e);
+        setIsLoading(false);
       });
   };
 
@@ -48,6 +63,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         error,
         onLogin,
         onRegister,
+        onLogout,
       }}
     >
       {children}

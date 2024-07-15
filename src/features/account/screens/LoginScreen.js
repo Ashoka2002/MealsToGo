@@ -21,8 +21,8 @@ const StyledView = styled.View`
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthenticationContext);
-  console.log(error, typeof error);
+  const { onLogin, error, isLoading } = useContext(AuthenticationContext);
+
   return (
     <BackgroundImg>
       <BackgroundCover />
@@ -44,8 +44,13 @@ export const LoginScreen = ({ navigation }) => {
           value={password}
           onChangeText={setPassword}
         />
-        <AuthButton icon="lock-open-outline" mode="contained" onPress={() => onLogin(email, password)}>
-          Login
+        <AuthButton
+          icon="lock-open-outline"
+          mode="contained"
+          loading={isLoading}
+          onPress={() => onLogin(email, password)}
+        >
+          {!isLoading ? "Login" : "Loading..."}
         </AuthButton>
         {error && (
           <ErrorContainer>

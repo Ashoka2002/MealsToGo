@@ -1,4 +1,7 @@
 import React, { useState, useContext } from "react";
+
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
+
 import {
   ErrorContainer,
   BackgroundImg,
@@ -9,14 +12,14 @@ import {
   AuthButton,
 } from "../components/AccountStyle";
 
-import { Text } from "../../../components/typography/typographyComp";
 import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
+import { Text } from "../../../components/typography/typographyComp";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const { onRegister, error } = useContext(AuthenticationContext);
+  const { onRegister, error, isLoading } = useContext(AuthenticationContext);
   return (
     <BackgroundImg>
       <BackgroundCover />
@@ -55,8 +58,13 @@ export const RegisterScreen = ({ navigation }) => {
           </ErrorContainer>
         )}
 
-        <AuthButton icon="email" mode="contained" onPress={() => onRegister(email, password, repeatedPassword)}>
-          Register
+        <AuthButton
+          icon="email"
+          mode="contained"
+          loading={isLoading}
+          onPress={() => onRegister(email, password, repeatedPassword)}
+        >
+          {isLoading ? "Loading..." : "Register"}
         </AuthButton>
       </AccountContentContainer>
 
