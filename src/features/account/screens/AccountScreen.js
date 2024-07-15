@@ -1,10 +1,20 @@
 import React from "react";
-import { BackgroundCover, BackgroundImg } from "../components/BackgroundImgView";
+import { AccountContentContainer, AuthButton, BackgroundCover, BackgroundImg } from "../components/AccountStyle";
 
-export const AccountScreen = () => {
+import { Button } from "react-native-paper";
+
+export const AccountScreen = ({ navigation }) => {
   return (
     <BackgroundImg>
       <BackgroundCover />
+      <AccountContentContainer elevation={2}>
+        <AuthButton icon="lock-open-outline" mode="contained" onPress={() => navigation.navigate("Login")}>
+          Login
+        </AuthButton>
+        <AuthButton icon="lock-open-outline" mode="contained" onPress={() => navigation.navigate("Register")}>
+          Register
+        </AuthButton>
+      </AccountContentContainer>
     </BackgroundImg>
   );
 };
