@@ -1,8 +1,6 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { SafeArea } from "../../components/utility/SafeAreaComp";
 import { RestaurantNavigator } from "./RestaurantsNavigator";
 
 import { Image, Text, View } from "react-native";
@@ -35,20 +33,18 @@ function tabBarIcon(color, size, route) {
 
 function AppNavigation() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => tabBarIcon(color, size, route),
-          tabBarActiveTintColor: "tomato",
-          tabBarInactiveTintColor: "gray",
-          headerShown: false,
-        })}
-      >
-        <Tab.Screen name="Home" component={RestaurantNavigator} />
-        <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => tabBarIcon(color, size, route),
+        tabBarActiveTintColor: "tomato",
+        tabBarInactiveTintColor: "gray",
+        headerShown: false,
+      })}
+    >
+      <Tab.Screen name="Home" component={RestaurantNavigator} />
+      <Tab.Screen name="Map" component={MapScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }
 

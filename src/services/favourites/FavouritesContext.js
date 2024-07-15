@@ -35,7 +35,9 @@ export const FavouritesContextProvider = ({ children }) => {
     setFavourites(newRestaurant);
   };
 
-  useEffect(getFav, []);
+  useEffect(() => {
+    getFav();
+  }, []);
 
   useEffect(() => {
     saveFav(favourites);
