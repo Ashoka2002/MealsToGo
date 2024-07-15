@@ -1,25 +1,16 @@
-import { Text, View } from "react-native";
-import { SafeArea } from "../../components/utility/SafeAreaComp";
-
 import { createStackNavigator } from "@react-navigation/stack";
+import { LoginScreen } from "../../features/account/screens/LoginScreen";
+import { AccountScreen } from "../../features/account/screens/AccountScreen";
+import { RegisterScreen } from "../../features/account/screens/RegisterScreen";
 
 const Stack = createStackNavigator();
-
-function Login() {
-  return (
-    <View style={{ backgroundColor: "skyblue", flex: 1 }}>
-      <SafeArea>
-        <Text>You are not Authenticated</Text>
-      </SafeArea>
-    </View>
-  );
-}
 
 export const AccountNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Main" component={Login}></Stack.Screen>
-      <Stack.Screen name="Login" component={Login}></Stack.Screen>
+      <Stack.Screen name="Main" component={AccountScreen}></Stack.Screen>
+      <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+      <Stack.Screen name="Register" component={RegisterScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 };
