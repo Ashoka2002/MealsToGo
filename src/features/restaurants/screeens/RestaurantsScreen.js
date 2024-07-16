@@ -8,7 +8,7 @@ import { RestaurantContext } from "../../../services/restaurants/mock/restaurant
 import SearchComp from "../components/SearchComp";
 import { FavouriteBar } from "../../../components/favourites/FavouriteBar";
 
-const StyledFlatList = styled(FlatList).attrs({
+export const StyledFlatList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
   },
