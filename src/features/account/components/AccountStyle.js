@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { Button, TextInput } from "react-native-paper";
 import { colors } from "../../../infrastructure/theme/colors";
 import { Text } from "../../../components/typography/typographyComp";
+import LottieView from "lottie-react-native";
 
 export const BackgroundImg = styled.ImageBackground.attrs({ source: require("../../../../assets/home_bg.jpg") })`
   flex: 1;
@@ -45,4 +46,16 @@ export const ErrorContainer = styled.View`
   align-self: center;
   margin-top: ${(props) => props.theme.space[2]};
   margin-bottom: ${(props) => props.theme.space[2]};
+`;
+
+export const WatermelonAnimation = styled(LottieView).attrs({
+  autoPlay: true,
+  loop: true,
+  source: require("../../../../assets/watermelon.json"),
+  key: "animation",
+  resizeMode: "cover",
+})`
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
 `;
