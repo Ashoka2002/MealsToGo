@@ -35,7 +35,7 @@ export default function MapScreen({ navigation }) {
             latitude: lat,
             longitude: lng,
             latitudeDelta: latDelta,
-            longitudeDelta: 0.2,
+            longitudeDelta: 0.1,
           }}
         >
           {restaurants.map((res) => (

@@ -1,30 +1,18 @@
-import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
 
 import { RestaurantNavigator } from "./RestaurantsNavigator";
 
-import { Image, Text, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MapScreen from "../../features/map/screens/MapScreen";
-import { AuthButton } from "../../features/account/components/AccountStyle";
-import { AuthenticationContext } from "../../services/firebase/AuthenticationContext";
 
+import { SettingsScreen } from "../../features/settings/screens/SettingScreen";
+import { FavouritesContextProvider } from "../../services/favourites/FavouritesContext";
 import { LocationContextProvider } from "../../services/location/locationContext";
 import { RestaurantProvider } from "../../services/restaurants/mock/restaurantsContext";
-import { FavouritesContextProvider } from "../../services/favourites/FavouritesContext";
+import { SettingsNavigator } from "./settingsNavigator";
 
 const Tab = createBottomTabNavigator();
-
-function SettingsScreen() {
-  const { onLogout } = useContext(AuthenticationContext);
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <AuthButton icon="logout" mode="contained" onPress={() => onLogout()}>
-        Signout
-      </AuthButton>
-    </View>
-  );
-}
 
 function tabBarIcon(color, size, route) {
   let iconName;
@@ -55,7 +43,7 @@ function AppNavigation() {
           >
             <Tab.Screen name="Home" component={RestaurantNavigator} />
             <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
+            <Tab.Screen name="Settings" component={SettingsNavigator} />
           </Tab.Navigator>
         </RestaurantProvider>
       </LocationContextProvider>
