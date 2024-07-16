@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Touchable, View } from "react-native";
 import { AuthButton } from "../../account/components/AccountStyle";
 import { useContext } from "react";
 import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
@@ -7,6 +7,7 @@ import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/Spacer/SpacerComp";
 import { Text } from "../../../components/typography/typographyComp";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -22,7 +23,9 @@ export function SettingsScreen({ navigation }) {
   return (
     <SafeArea>
       <AvatarContainer>
-        <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+        <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+          <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+        </TouchableOpacity>
         <Spacer position="top" size="large">
           <Text variant="label">{user.email}</Text>
         </Spacer>
