@@ -7,6 +7,7 @@ import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
 import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
 import SearchComp from "../components/SearchComp";
 import { FavouriteBar } from "../../../components/favourites/FavouriteBar";
+import { FadeInView } from "../../../components/animation/FadeAnimation";
 
 export const StyledFlatList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -35,7 +36,9 @@ function RestaurantsScreen({ navigation }) {
       {isLoading ? (
         <StyledActivityIndicator animating={true} color={MD2Colors.orange800} size={50} />
       ) : (
-        <StyledFlatList data={restaurants} renderItem={renderItem} keyExtractor={(item) => item.name.toString()} />
+        <FadeInView>
+          <StyledFlatList data={restaurants} renderItem={renderItem} keyExtractor={(item) => item.name.toString()} />
+        </FadeInView>
       )}
     </SafeArea>
   );
