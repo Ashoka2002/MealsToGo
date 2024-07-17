@@ -2,9 +2,9 @@ import React from "react";
 
 import { SettingsScreen } from "../../features/settings/screens/SettingScreen";
 
-import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
-import { FavouritesScreen } from "../../features/settings/screens/FavouritesScreen";
+import { CardStyleInterpolators, createStackNavigator } from "@react-navigation/stack";
 import { CameraScreen } from "../../features/settings/screens/CameraScreen";
+import { FavouritesScreen } from "../../features/settings/screens/FavouritesScreen";
 
 const SettingsStack = createStackNavigator();
 

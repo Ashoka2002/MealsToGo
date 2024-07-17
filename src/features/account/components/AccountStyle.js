@@ -1,8 +1,8 @@
-import styled from "styled-components/native";
-import { Button, TextInput } from "react-native-paper";
-import { colors } from "../../../infrastructure/theme/colors";
-import { Text } from "../../../components/typography/typographyComp";
 import LottieView from "lottie-react-native";
+import { Button, TextInput } from "react-native-paper";
+import styled from "styled-components/native";
+import { Text } from "../../../components/typography/typographyComp";
+import { colors } from "../../../infrastructure/theme/colors";
 
 export const BackgroundImg = styled.ImageBackground.attrs({ source: require("../../../../assets/home_bg.jpg") })`
   flex: 1;

@@ -1,13 +1,15 @@
+import { useContext } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
+import { Card } from "react-native-paper";
 import styled from "styled-components/native";
+import { FavouritesContext } from "../../services/favourites/FavouritesContext";
 import { Spacer } from "../Spacer/SpacerComp";
 import { CompactRestaurantInfo } from "../restaurants/CompactRestaurantInfo";
-import { useContext } from "react";
-import { FavouritesContext } from "../../services/favourites/FavouritesContext";
 import { Text } from "../typography/typographyComp";
 
-const FavouritesWrapper = styled.View`
+const FavouritesWrapper = styled(Card)`
   padding: 10px;
+  z-index: 200;
 `;
 
 export const FavouriteBar = ({ navigation }) => {

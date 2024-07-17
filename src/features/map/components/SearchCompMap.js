@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components";
 import { LocationContext } from "../../../services/location/locationContext";
-import { SafeArea } from "../../../components/utility/SafeAreaComp";
 
 const SearchContainer = styled.View`
   justify-content: center;

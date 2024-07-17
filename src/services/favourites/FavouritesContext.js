@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getAuth } from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthenticationContext } from "../firebase/AuthenticationContext";
 
 export const FavouritesContext = createContext();

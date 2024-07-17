@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
+import { Text } from "react-native-paper";
+import styled from "styled-components/native";
+import { Spacer } from "../../../components/Spacer/SpacerComp";
 import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import { FavouritesContext } from "../../../services/favourites/FavouritesContext";
 import { RestaurantInfoCard } from "../../restaurants/components/RestaurantsInfoCardComp";
-import { Spacer } from "../../../components/Spacer/SpacerComp";
-import { Text } from "react-native-paper";
 import { StyledFlatList } from "../../restaurants/screeens/RestaurantsScreen";
 
 const NoFavouritesArea = styled(SafeArea)`

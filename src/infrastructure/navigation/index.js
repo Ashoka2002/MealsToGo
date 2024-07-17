@@ -1,8 +1,8 @@
-import { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
+import { useContext } from "react";
 
-import AppNavigation from "./AppNavigation";
 import { AuthenticationContext } from "../../services/firebase/AuthenticationContext";
+import AppNavigation from "./AppNavigation";
 
 import { AccountNavigator } from "./AccountNavigator";
 

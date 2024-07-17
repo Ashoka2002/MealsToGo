@@ -6,10 +6,10 @@ import { RestaurantNavigator } from "./RestaurantsNavigator";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import MapScreen from "../../features/map/screens/MapScreen";
 
-import { SettingsScreen } from "../../features/settings/screens/SettingScreen";
 import { FavouritesContextProvider } from "../../services/favourites/FavouritesContext";
 import { LocationContextProvider } from "../../services/location/locationContext";
 import { RestaurantProvider } from "../../services/restaurants/mock/restaurantsContext";
+import { colors } from "../theme/colors";
 import { SettingsNavigator } from "./settingsNavigator";
 
 const Tab = createBottomTabNavigator();
@@ -36,8 +36,8 @@ function AppNavigation() {
           <Tab.Navigator
             screenOptions={({ route }) => ({
               tabBarIcon: ({ color, size }) => tabBarIcon(color, size, route),
-              tabBarActiveTintColor: "tomato",
-              tabBarInactiveTintColor: "gray",
+              tabBarActiveTintColor: colors.brand.primary,
+              tabBarInactiveTintColor: colors.brand.muted,
               headerShown: false,
             })}
           >

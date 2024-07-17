@@ -1,10 +1,10 @@
-import { Image, View } from "react-native";
+import { Image } from "react-native";
 import { SvgXml } from "react-native-svg";
 import open from "../../../../assets/open";
 import star from "../../../../assets/star";
+import { Favourite } from "../../../components/favourites/FavouriteIcon";
 import { Text } from "../../../components/typography/typographyComp";
 import { Address, Info, Rating, RestaurantCard, RestaurantCardCover, Row } from "./RestaurantsInfoCardStyle";
-import { Favourite } from "../../../components/favourites/FavouriteIcon";
 
 export function RestaurantInfoCard({ restaurant = {} }) {
   const {

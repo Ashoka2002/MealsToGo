@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
 import { Card } from "react-native-paper";
+import styled from "styled-components/native";
 
 export const Address = styled.Text`
   font-family: ${({ theme }) => theme.fonts.body};

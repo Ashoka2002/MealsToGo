@@ -1,14 +1,12 @@
 import React from "react";
 import {
   AccountContentContainer,
-  AnimationWrapper,
   AuthButton,
   BackgroundCover,
   BackgroundImg,
   Title,
   WatermelonAnimation,
 } from "../components/AccountStyle";
-import LottieView from "lottie-react-native";
 
 export const AccountScreen = ({ navigation }) => {
   return (

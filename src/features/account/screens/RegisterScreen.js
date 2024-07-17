@@ -1,19 +1,17 @@
-import React, { useState, useContext } from "react";
-
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import React, { useContext, useState } from "react";
 
 import {
-  ErrorContainer,
-  BackgroundImg,
-  BackgroundCover,
-  Title,
   AccountContentContainer,
-  AuthInput,
   AuthButton,
+  AuthInput,
+  BackgroundCover,
+  BackgroundImg,
+  ErrorContainer,
+  Title,
 } from "../components/AccountStyle";
 
-import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
 import { Text } from "../../../components/typography/typographyComp";
+import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");

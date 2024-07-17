@@ -1,9 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { useContext, useRef, useState } from "react";
+import * as MediaLibrary from "expo-media-library";
+import { useContext, useRef } from "react";
 import { Button, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
-import * as MediaLibrary from "expo-media-library";
 
 export const CameraScreen = ({ navigation }) => {
   const [permission, requestPermission] = useCameraPermissions();

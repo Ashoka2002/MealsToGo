@@ -1,7 +1,7 @@
-import { Image, View, Platform } from "react-native";
+import { Platform } from "react-native";
+import WebView from "react-native-webview";
 import styled from "styled-components/native";
 import { Text } from "../typography/typographyComp";
-import WebView from "react-native-webview";
 
 const StyledImg = styled.Image`
   width: 120px;

@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import MapView, { Marker, Callout } from "react-native-maps";
+import MapView, { Callout, Marker } from "react-native-maps";
 import styled from "styled-components";
-import SearchCompMap from "../components/SearchCompMap";
-import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
 import { LocationContext } from "../../../services/location/locationContext";
+import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
 import { MapCalloutComp } from "../components/MapCalloutComp";
+import SearchCompMap from "../components/SearchCompMap";
 
 const Map = styled(MapView)`
   width: 100%;

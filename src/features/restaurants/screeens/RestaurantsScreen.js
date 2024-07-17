@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
-import { FlatList, ActivityIndicator, TouchableOpacity, Text } from "react-native";
+import { ActivityIndicator, FlatList, TouchableOpacity } from "react-native";
 import { MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
-import { SafeArea } from "../../../components/utility/SafeAreaComp";
-import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
-import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
-import SearchComp from "../components/SearchComp";
-import { FavouriteBar } from "../../../components/favourites/FavouriteBar";
 import { FadeInView } from "../../../components/animation/FadeAnimation";
+import { FavouriteBar } from "../../../components/favourites/FavouriteBar";
+import { SafeArea } from "../../../components/utility/SafeAreaComp";
+import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
+import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
+import SearchComp from "../components/SearchComp";
 
 export const StyledFlatList = styled(FlatList).attrs({
   contentContainerStyle: {

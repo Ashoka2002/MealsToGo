@@ -1,6 +1,7 @@
-import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import { useContext, useState } from "react";
 import styled from "styled-components/native";
+import { Text } from "../../../components/typography/typographyComp";
+import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
 import {
   AuthButton,
   AuthInput,
@@ -9,8 +10,6 @@ import {
   ErrorContainer,
   Title,
 } from "../components/AccountStyle";
-import { AuthenticationContext } from "../../../services/firebase/AuthenticationContext";
-import { Text } from "../../../components/typography/typographyComp";
 
 const StyledView = styled.View`
   width: 80%;
