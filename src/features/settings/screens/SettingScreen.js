@@ -15,15 +15,26 @@ const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
   background-color: rgba(255, 255, 255, 0.6);
   margin-bottom: 5px;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: white;
 `;
+
 const AvatarContainer = styled.View`
   align-items: center;
   justify-content: center;
   margin-top: 50px;
 `;
 
-const SettingBG = styled.ImageBackground.attrs({ source: require("../../../../assets/home_bg.jpg") })`
+const SettingBG = styled.ImageBackground.attrs({ source: require("../../../../assets/home_bg3.webp") })`
   flex: 1;
+`;
+
+const StyledText = styled(Text)`
+  font-size: 20px;
 `;
 
 export const BackgroundCover = styled.View`
@@ -70,36 +81,40 @@ export function SettingsScreen({ navigation }) {
 
   return (
     <SettingBG>
+      <BackgroundCover />
       <AvatarContainer>
         <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
           {!photo ? (
             <Avatar.Icon size={180} icon="human" backgroundColor={colors.brand.primary} />
           ) : (
-            <Avatar.Image size={180} source={{ uri: photo }} />
+            <Avatar.Image elevation={15} size={180} source={{ uri: photo }} />
           )}
         </TouchableOpacity>
         <Spacer position="top" size="large">
-          <Text variant="label">{user.email}</Text>
+          <StyledText>{user.email}</StyledText>
         </Spacer>
       </AvatarContainer>
       <List.Section>
         <SettingsItem
+          elevation={5}
           title="Favourites"
-          // description="View your favourites"
           left={(props) => <List.Icon {...props} color={colors.ui.error} icon="heart" />}
           onPress={() => navigation.navigate("Favourites")}
         />
         <SettingsItem
+          elevation={5}
           title="Payment"
           left={(props) => <List.Icon {...props} color="black" icon="currency-inr" />}
           onPress={() => navigation.navigate("Favourites")}
         />
         <SettingsItem
+          elevation={5}
           title="Cart"
           left={(props) => <List.Icon {...props} color="black" icon="cart" />}
           onPress={() => navigation.navigate("Favourites")}
         />
         <SettingsItem
+          elevation={5}
           title="Logout"
           left={(props) => <List.Icon {...props} color="black" icon="door" />}
           onPress={onLogout}

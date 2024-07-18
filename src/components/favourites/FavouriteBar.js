@@ -12,6 +12,11 @@ const FavouritesWrapper = styled(Card)`
   z-index: 200;
 `;
 
+const StyledText = styled(Text)`
+  font-size: 18px;
+  padding-left: 10px;
+`;
+
 export const FavouriteBar = ({ navigation }) => {
   const { favourites } = useContext(FavouritesContext);
 
@@ -22,7 +27,7 @@ export const FavouriteBar = ({ navigation }) => {
   return (
     <FavouritesWrapper>
       <Spacer variant="left.large">
-        <Text variant="caption">Favourites</Text>
+        <StyledText variant="body">Favourites</StyledText>
       </Spacer>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>

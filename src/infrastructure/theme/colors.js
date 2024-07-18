@@ -2,7 +2,7 @@ export const colors = {
   brand: {
     primary: "#2182Be",
     secondary: "#5282BD",
-    muted: "#C6DAF7",
+    muted: "grey",
   },
   ui: {
     primary: "#262626",
@@ -14,8 +14,9 @@ export const colors = {
     success: "#138000",
   },
   bg: {
-    primary: "#FFFFFF",
+    primary: "#ffffff",
     secondary: "#F1F1F1",
+    restaurantBg: "#FFD35C",
   },
   text: {
     primary: "#262626",

@@ -9,8 +9,10 @@ const SearchContainer = styled.View`
 `;
 
 const SearchBar = styled(Searchbar)`
-  border-radius: ${({ theme }) => theme.sizes[0]};
+  border-radius: ${({ theme }) => theme.sizes[3]};
   background-color: ${({ theme }) => theme.colors.bg.primary};
+  border-width: 1px;
+  border-color: grey;
   position: absolute;
   top: 30px;
   left: 8px;

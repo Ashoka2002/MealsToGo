@@ -39,6 +39,10 @@ function AppNavigation() {
               tabBarActiveTintColor: colors.brand.primary,
               tabBarInactiveTintColor: colors.brand.muted,
               headerShown: false,
+              tabBarStyle: {
+                backgroundColor: colors.bg.primary,
+                borderTopWidth: 0,
+              },
             })}
           >
             <Tab.Screen name="Home" component={RestaurantNavigator} />

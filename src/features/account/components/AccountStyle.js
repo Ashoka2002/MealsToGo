@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import { Text } from "../../../components/typography/typographyComp";
 import { colors } from "../../../infrastructure/theme/colors";
 
-export const BackgroundImg = styled.ImageBackground.attrs({ source: require("../../../../assets/home_bg.jpg") })`
+export const BackgroundImg = styled.ImageBackground.attrs({ source: require("../../../../assets/home_bg2.webp") })`
   flex: 1;
   align-items: center;
   justify-content: center;

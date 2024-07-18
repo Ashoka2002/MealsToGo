@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ActivityIndicator, FlatList, TouchableOpacity } from "react-native";
+import { ActivityIndicator, FlatList, ImageBackground, TouchableOpacity } from "react-native";
 import { MD2Colors } from "react-native-paper";
 import styled from "styled-components/native";
 import { FadeInView } from "../../../components/animation/FadeAnimation";
@@ -8,6 +8,7 @@ import { SafeArea } from "../../../components/utility/SafeAreaComp";
 import { RestaurantContext } from "../../../services/restaurants/mock/restaurantsContext";
 import { RestaurantInfoCard } from "../components/RestaurantsInfoCardComp";
 import SearchComp from "../components/SearchComp";
+import { mockImages } from "../../../services/restaurants/mock";
 
 export const StyledFlatList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -30,7 +31,7 @@ function RestaurantsScreen({ navigation }) {
   );
 
   return (
-    <SafeArea>
+    <SafeArea bg={0.6}>
       <SearchComp isFavToggled={isToggled} onFavToggle={() => setIsToggled(!isToggled)} />
       {isToggled && <FavouriteBar navigation={navigation} />}
       {isLoading ? (

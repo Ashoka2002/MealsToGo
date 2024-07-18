@@ -6,11 +6,14 @@ import { LocationContext } from "../../../services/location/locationContext";
 const SearchContainer = styled.View`
   justify-content: center;
   padding: ${({ theme }) => theme.space[3]};
+  padding-bottom: 5;
 `;
 
 const SearchBar = styled(Searchbar)`
-  border-radius: ${({ theme }) => theme.sizes[0]};
+  border-radius: ${({ theme }) => theme.sizes[2]};
   background-color: ${({ theme }) => theme.colors.bg.primary};
+  border-width: 1px;
+  border-color: grey;
 `;
 
 function SearchComp({ isFavToggled, onFavToggle }) {
@@ -31,12 +34,13 @@ function SearchComp({ isFavToggled, onFavToggle }) {
     <SearchContainer>
       <SearchBar
         icon={isFavToggled ? "heart" : "heart-outline"}
+        iconColor={isFavToggled ? "red" : "grey"}
         onIconPress={onFavToggle}
         placeholder="Search for a location"
         onSubmitEditing={onSearch}
         onChangeText={setSearchKeyword}
         value={searchKeyword}
-        elevation={1}
+        elevation={2}
       />
     </SearchContainer>
   );
