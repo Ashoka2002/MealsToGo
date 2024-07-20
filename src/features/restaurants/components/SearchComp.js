@@ -6,7 +6,7 @@ import { LocationContext } from "../../../services/location/locationContext";
 const SearchContainer = styled.View`
   justify-content: center;
   padding: ${({ theme }) => theme.space[3]};
-  padding-bottom: 5;
+  padding-bottom: 5px;
 `;
 
 const SearchBar = styled(Searchbar)`
